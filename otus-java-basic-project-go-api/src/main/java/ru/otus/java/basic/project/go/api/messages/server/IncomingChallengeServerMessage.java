@@ -16,7 +16,6 @@ public class IncomingChallengeServerMessage extends ClientServerMessage {
 
     public IncomingChallengeServerMessage(Long context, String challenger) {
         super(context);
-        if (challenger == null) throw new IllegalArgumentException("challenger is null");
         this.challenger = challenger;
     }
 
@@ -25,7 +24,6 @@ public class IncomingChallengeServerMessage extends ClientServerMessage {
     }
 
     public void setChallenger(String challenger) {
-        if (challenger == null) throw new IllegalArgumentException("challenger is null");
         this.challenger = challenger;
     }
 

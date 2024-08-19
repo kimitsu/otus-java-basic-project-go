@@ -3,6 +3,8 @@ package ru.otus.java.basic.project.go.api.messages.server;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import ru.otus.java.basic.project.go.api.messages.ClientServerMessage;
 
+import java.util.Objects;
+
 public class ErrorServerMessage extends ClientServerMessage {
 
     @JsonProperty("e")
@@ -15,7 +17,6 @@ public class ErrorServerMessage extends ClientServerMessage {
 
     public ErrorServerMessage(Long context, String errorMessage) {
         super(context);
-        if (errorMessage == null) throw new IllegalArgumentException("errorMessage is null");
         this.errorMessage = errorMessage;
     }
 
@@ -24,7 +25,6 @@ public class ErrorServerMessage extends ClientServerMessage {
     }
 
     public void setErrorMessage(String errorMessage) {
-        if (errorMessage == null) throw new IllegalArgumentException("errorMessage is null");
         this.errorMessage = errorMessage;
     }
 
@@ -32,7 +32,7 @@ public class ErrorServerMessage extends ClientServerMessage {
     public boolean equals(Object obj) {
         if (!super.equals(obj)) return false;
         ErrorServerMessage message = (ErrorServerMessage) obj;
-        if (!message.errorMessage.equals(this.errorMessage)) return false;
+        if (!Objects.equals(this.errorMessage, message.errorMessage)) return false;
         return true;
     }
 }

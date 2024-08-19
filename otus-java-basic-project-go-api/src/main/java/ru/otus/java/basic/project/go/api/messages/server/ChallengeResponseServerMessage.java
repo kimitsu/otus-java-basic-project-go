@@ -16,12 +16,10 @@ public class ChallengeResponseServerMessage extends ClientServerMessage {
 
     public ChallengeResponseServerMessage(Long context, ChallengeResponse response) {
         super(context);
-        if (response == null) throw new IllegalArgumentException("response is null");
         this.response = response;
     }
 
     public void setResponse(ChallengeResponse response) {
-        if (response == null) throw new IllegalArgumentException("response is null");
         this.response = response;
     }
 

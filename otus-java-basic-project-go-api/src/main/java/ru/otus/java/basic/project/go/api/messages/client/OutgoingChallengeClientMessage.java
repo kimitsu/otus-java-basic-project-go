@@ -15,12 +15,10 @@ public class OutgoingChallengeClientMessage extends ClientServerMessage {
 
     public OutgoingChallengeClientMessage(Long context, String client) {
         super(context);
-        if (client == null) throw new IllegalArgumentException("challenger is null");
         this.client = client;
     }
 
     public void setClient(String client) {
-        if (client == null) throw new IllegalArgumentException("challenger is null");
         this.client = client;
     }
 

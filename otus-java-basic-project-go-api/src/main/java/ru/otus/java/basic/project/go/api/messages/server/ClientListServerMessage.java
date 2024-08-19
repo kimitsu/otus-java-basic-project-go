@@ -16,7 +16,6 @@ public class ClientListServerMessage extends ClientServerMessage {
 
     public ClientListServerMessage(Long context, Collection<String> clients) {
         super(context);
-        if (clients == null) throw new IllegalArgumentException("clients is null");
         this.clients = clients;
     }
 
@@ -25,7 +24,6 @@ public class ClientListServerMessage extends ClientServerMessage {
     }
 
     public void setClients(Collection<String> clients) {
-        if (clients == null) throw new IllegalArgumentException("clients is null");
         this.clients = clients;
     }
 
