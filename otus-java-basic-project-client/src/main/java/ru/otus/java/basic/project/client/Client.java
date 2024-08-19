@@ -25,10 +25,10 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * Serves as a central controller of the application, as well as mediator between the UI and IO.
+ * Serves as a central controller of the application, as well as mediator between the UI and client-server IO.
  * Manages <code>ServerConnection</code> to communicate with the server, sets up appropriate message listeners.
  * Initializes, shows and eventually disposes of the UI windows.
- * Provides methods to send messages to the server which return <code>CompletableFuture</code>
+ * Provides methods to send messages to the server which return <code>CompletableFuture</code> objects
  * that complete after receiving appropriate responses or errors.
  */
 public class Client implements AutoCloseable {

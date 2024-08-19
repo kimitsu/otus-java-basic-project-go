@@ -18,7 +18,7 @@ import java.util.Map;
 
 /**
  * Connects to the server, sends and receives messages.
- * Received messages are dispatched based on their classes and context ids to appropriate listeners.
+ * Received messages are dispatched based on their classes and context ids to their appropriate listeners.
  */
 public class ServerConnection implements AutoCloseable {
     private static final Logger log = LogManager.getLogger(ServerConnection.class);
