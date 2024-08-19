@@ -14,8 +14,6 @@ public class GameStateServerMessage extends ClientServerMessage {
     private GameState gameState;
     @JsonProperty("s")
     private int[][] stones;
-    //    @JsonProperty("bl")
-//    private int[][] boardLiberties;
     @JsonProperty("t")
     private int[][] territory;
     @JsonProperty("wc")
@@ -44,7 +42,6 @@ public class GameStateServerMessage extends ClientServerMessage {
         this.gameState = gameState;
         this.stones = stones;
         this.territory = territory;
-//        this.boardLiberties = boardLiberties;
         this.whiteCaptures = whiteCaptures;
         this.blackCaptures = blackCaptures;
         this.whiteTerritory = whiteTerritory;
@@ -114,7 +111,6 @@ public class GameStateServerMessage extends ClientServerMessage {
         if (!Objects.equals(this.lastMoveY, message.lastMoveY)) return false;
         if (!Arrays.deepEquals(message.stones, this.stones)) return false;
         if (!Arrays.deepEquals(message.territory, this.territory)) return false;
-        //if (!Arrays.deepEquals(message.boardLiberties, this.boardLiberties)) return false;
         return true;
     }
 }
