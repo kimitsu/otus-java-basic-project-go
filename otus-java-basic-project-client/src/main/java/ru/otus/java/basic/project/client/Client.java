@@ -13,7 +13,6 @@ import ru.otus.java.basic.project.api.messages.client.*;
 import ru.otus.java.basic.project.api.messages.server.*;
 import ru.otus.java.basic.project.client.exceptions.ApplicationException;
 import ru.otus.java.basic.project.client.exceptions.ChallengeCancelledException;
-import ru.otus.java.basic.project.client.exceptions.InvalidServerMessageException;
 import ru.otus.java.basic.project.client.exceptions.ServerError;
 import ru.otus.java.basic.project.client.windows.*;
 
@@ -55,8 +54,10 @@ public class Client implements AutoCloseable {
     }
 
     public void close() {
-        serverConnection.setDisconnectListener(null);
-        if (serverConnection != null) serverConnection.close();
+        if (serverConnection != null) {
+            serverConnection.setDisconnectListener(null);
+            serverConnection.close();
+        }
         executorService.shutdownNow();
         executorService.close();
         loginWindow.dispose();
@@ -100,8 +101,6 @@ public class Client implements AutoCloseable {
                 throw new ApplicationException("Incorrect input", e);
             } catch (IOException e) {
                 throw new ApplicationException("Connection error", e);
-            } catch (InvalidServerMessageException e) {
-                throw new ApplicationException("Server response error", e);
             } catch (ApplicationException e) {
                 throw new ApplicationException("Application error", e);
             }

@@ -6,9 +6,7 @@ import ru.otus.java.basic.project.api.MessageProcessor;
 import ru.otus.java.basic.project.api.context.Context;
 import ru.otus.java.basic.project.api.exceptions.MessageProcessingException;
 import ru.otus.java.basic.project.api.messages.ClientServerMessage;
-import ru.otus.java.basic.project.api.messages.server.ErrorServerMessage;
 import ru.otus.java.basic.project.client.exceptions.ApplicationException;
-import ru.otus.java.basic.project.client.exceptions.InvalidServerMessageException;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -35,7 +33,7 @@ public class ServerConnection implements AutoCloseable {
     private Runnable disconnectListener = null;
 
     public ServerConnection(String hostPort, String name, String password, boolean register)
-            throws IOException, InvalidServerMessageException, IllegalArgumentException, ApplicationException {
+            throws IOException, IllegalArgumentException, ApplicationException {
         int delimiter = hostPort.indexOf(':');
         if (delimiter == -1) {
             this.host = hostPort;
