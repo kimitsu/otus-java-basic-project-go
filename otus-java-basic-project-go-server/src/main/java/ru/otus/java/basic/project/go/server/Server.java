@@ -66,6 +66,11 @@ public class Server implements AutoCloseable {
         } catch (IOException e) {
             log.error("Error while closing socket", e);
         }
+        try {
+            if (authenticationProvider != null) authenticationProvider.close();
+        } catch (Exception e) {
+            log.error("Error while closing authentication provider", e);
+        }
     }
 
     public synchronized void addClient(ClientConnection clientConnection) throws ClientAlreadyLoggedIn {

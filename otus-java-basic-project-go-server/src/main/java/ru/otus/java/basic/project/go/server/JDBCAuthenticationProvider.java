@@ -8,7 +8,7 @@ import java.sql.*;
 import java.util.Base64;
 import java.util.Random;
 
-public class JDBCAuthenticationProvider implements AuthenticationProvider, AutoCloseable {
+public class JDBCAuthenticationProvider implements AuthenticationProvider {
     private final Connection connection;
 
     /**
@@ -175,8 +175,6 @@ public class JDBCAuthenticationProvider implements AuthenticationProvider, AutoC
      */
     @Override
     public void close() throws SQLException {
-        if (connection != null) {
-            connection.close();
-        }
+        if (connection != null) connection.close();
     }
 }

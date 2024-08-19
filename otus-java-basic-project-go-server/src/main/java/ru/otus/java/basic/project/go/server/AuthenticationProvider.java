@@ -2,7 +2,7 @@ package ru.otus.java.basic.project.go.server;
 
 import ru.otus.java.basic.project.go.server.exceptions.AuthenticationException;
 
-public interface AuthenticationProvider {
+public interface AuthenticationProvider extends AutoCloseable {
         /**
          * Authenticates a user by a login and a password combination.
          *
