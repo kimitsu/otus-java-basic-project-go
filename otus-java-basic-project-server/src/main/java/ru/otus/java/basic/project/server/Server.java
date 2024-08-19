@@ -8,7 +8,7 @@ import ru.otus.java.basic.project.api.exceptions.MessageProcessingException;
 import ru.otus.java.basic.project.api.messages.server.GameStateServerMessage;
 import ru.otus.java.basic.project.server.exceptions.AuthenticationException;
 import ru.otus.java.basic.project.server.exceptions.ClientBusyException;
-import ru.otus.java.basic.project.server.exceptions.ClientNameAlreadyTaken;
+import ru.otus.java.basic.project.server.exceptions.ClientAlreadyLoggedIn;
 import ru.otus.java.basic.project.server.exceptions.ClientNotFoundException;
 import ru.otus.java.basic.project.server.game.Game;
 
@@ -21,7 +21,7 @@ import java.util.Map;
 /**
  * Acts as a central controller of the server application.
  * Listens to incoming connections, spawning a <code>ClientConnection</code> for each.
- * Manages games, and acts as a mediator between different clients.
+ * Acts as a mediator between different clients, providing methods to send messages to other clients.
  */
 public class Server implements AutoCloseable {
     private static final Logger log = LogManager.getLogger(Server.class);
@@ -68,10 +68,10 @@ public class Server implements AutoCloseable {
         }
     }
 
-    public synchronized void addClient(ClientConnection clientConnection) throws ClientNameAlreadyTaken {
+    public synchronized void addClient(ClientConnection clientConnection) throws ClientAlreadyLoggedIn {
         synchronized (clients) {
             if (clients.containsKey(clientConnection.getName())) {
-                throw new ClientNameAlreadyTaken();
+                throw new ClientAlreadyLoggedIn();
             }
             clients.put(clientConnection.getName(), clientConnection);
             for (ClientConnection client : clients.values()) {

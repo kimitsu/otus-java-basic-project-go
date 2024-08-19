@@ -1,5 +1,9 @@
 package ru.otus.java.basic.project.server.exceptions;
 
+/**
+ * Any exception during authentication, such as incorrect credentials,
+ * or errors due to the authentication provider failures.
+ */
 public class AuthenticationException extends Exception {
     public AuthenticationException(String message) {
         super(message);

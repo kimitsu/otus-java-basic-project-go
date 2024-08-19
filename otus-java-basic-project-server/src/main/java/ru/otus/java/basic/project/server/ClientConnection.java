@@ -27,8 +27,8 @@ import java.util.Map;
 /**
  * Represents a connected client.
  * Holds information about the client, its contexts and current game.
- * Dispatches client messages to their appropriate processors.
- * Sends server messages to the clients.
+ * Dispatches client messages to their appropriate processors based on their context ids and classes.
+ * Sends server messages to the client.
  */
 public class ClientConnection implements AutoCloseable {
     private static final Logger log = LogManager.getLogger(ClientConnection.class);
@@ -144,7 +144,7 @@ public class ClientConnection implements AutoCloseable {
         name = clientMessage.getName();
         try {
             server.addClient(this);
-        } catch (ClientNameAlreadyTaken e) {
+        } catch (ClientAlreadyLoggedIn e) {
             send(new ErrorServerMessage(context.getId(), "Client has already logged in"));
             this.name = null;
             close();
