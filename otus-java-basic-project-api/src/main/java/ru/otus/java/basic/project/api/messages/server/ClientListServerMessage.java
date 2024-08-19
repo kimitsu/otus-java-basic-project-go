@@ -1,9 +1,7 @@
 package ru.otus.java.basic.project.api.messages.server;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import ru.otus.java.basic.project.api.messages.ClientServerMessage;
-import ru.otus.java.basic.project.api.messages.client.OutgoingChallengeClientMessage;
 
 import java.util.Collection;
 import java.util.Objects;

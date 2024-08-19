@@ -5,8 +5,8 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ru.otus.java.basic.project.api.messages.client.*;
 import ru.otus.java.basic.project.api.exceptions.MessageProcessingException;
+import ru.otus.java.basic.project.api.messages.client.*;
 import ru.otus.java.basic.project.api.messages.server.*;
 
 /**

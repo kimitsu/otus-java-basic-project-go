@@ -20,6 +20,7 @@ public sealed class Context permits ChallengeContext, GameContext {
 
     /**
      * Generates a hopefully unique id
+     * @return a hopefully unique id
      */
     public static Long getNewId() {
         Random rng = new Random();
@@ -36,14 +37,31 @@ public sealed class Context permits ChallengeContext, GameContext {
         return id;
     }
 
+    /**
+     * Stores a listener for a particular message class
+     *
+     * @param messageClass a client-server message class to listen to
+     * @param listener     a message processor
+     */
     public <T extends ClientServerMessage> void setListener(Class<T> messageClass, MessageProcessor<T> listener) {
         listeners.put(messageClass, (MessageProcessor<ClientServerMessage>) listener);
     }
 
+    /**
+     * Removes a stored listener
+     *
+     * @param messageClass a client-server message class to stop listening to
+     */
     public <T extends ClientServerMessage> void removeListener(Class<T> messageClass) {
         listeners.remove(messageClass);
     }
 
+    /**
+     * Retrieves a stored listener
+     *
+     * @param messageClass a client-server message class to get listening for
+     * @return a message processor, listening to the specified message class
+     */
     public MessageProcessor<ClientServerMessage> getListener(Class<?> messageClass) {
         return listeners.get(messageClass);
     }
