@@ -9,6 +9,8 @@ import ru.otus.java.basic.project.api.exceptions.MessageProcessingException;
 import ru.otus.java.basic.project.api.messages.client.*;
 import ru.otus.java.basic.project.api.messages.server.*;
 
+import java.util.Objects;
+
 /**
  * A super-class for all client-server messages.
  * Uses jackson to serialize/deserialize messages to various classes according to "m" JSON field.
@@ -38,10 +40,22 @@ public abstract class ClientServerMessage {
 
     protected ClientServerMessage() {
     }
+
+    /**
+     * Create a new message with associated context id
+     *
+     * @param contextId an associated context id
+     */
     protected ClientServerMessage(Long contextId) {
         this.contextId = contextId;
     }
 
+    /**
+     * Serialize the client-server message into appropriate JSON string
+     *
+     * @return the JSON string
+     * @throws MessageProcessingException in case of some problem with the JSON serializer
+     */
     public String serialize() throws MessageProcessingException {
         try {
             return new ObjectMapper().writeValueAsString(this);
@@ -50,6 +64,13 @@ public abstract class ClientServerMessage {
         }
     }
 
+    /**
+     * Deserialize a client-server message into a new object of an appropriate Java class
+     *
+     * @param json a JSON string
+     * @return a new deserialized object of the appropriate Java class
+     * @throws MessageProcessingException in case of some problem with the JSON serializer
+     */
     public static ClientServerMessage deserialize(String json) throws MessageProcessingException {
         try {
             return new ObjectMapper().readValue(json, ClientServerMessage.class);
@@ -58,12 +79,17 @@ public abstract class ClientServerMessage {
         }
     }
 
+    /**
+     * @return associated context id
+     */
     public Long getContextId() {
         return contextId;
     }
 
     @Override
     public boolean equals(Object obj) {
-        return obj != null && obj.getClass().equals(this.getClass());
+        return obj != null &&
+                Objects.equals(this.getClass(), obj.getClass()) &&
+                Objects.equals(this.contextId, ((ClientServerMessage) obj).contextId);
     }
 }
