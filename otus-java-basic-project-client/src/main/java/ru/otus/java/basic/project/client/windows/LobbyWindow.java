@@ -12,6 +12,13 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Collection;
 
+/**
+ * The lobby window displays the list of clients, which it requests when the window is showed.
+ * The server also sends client list updates, which are processed by <code>Client</code>,
+ * which invokes this object's <code>refreshClientsList</code>.
+ * Challenge button shows modal <code>OutgoingChallengeWindow</code>.
+ * Exit button quits the application.
+ */
 public class LobbyWindow {
     private static final Logger log = LogManager.getLogger(LobbyWindow.class);
     private final Client client;

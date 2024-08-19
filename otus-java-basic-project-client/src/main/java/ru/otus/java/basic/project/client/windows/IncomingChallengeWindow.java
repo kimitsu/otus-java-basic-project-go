@@ -12,6 +12,12 @@ import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+/**
+ * The window that shows up if the client is not busy on the lobby window and is challenged by other client.
+ * The name label displays the challenger client's name.
+ * Accept and Reject buttons, as well as closing the window
+ * invokes <code>Client</code>'s <code>respondChallengeAsync</code>.
+ */
 public class IncomingChallengeWindow {
     private final static Logger log = LogManager.getLogger(IncomingChallengeWindow.class);
     private final Client client;

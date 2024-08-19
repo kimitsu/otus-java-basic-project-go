@@ -12,6 +12,12 @@ import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+/**
+ * Outgoing challenge window facilitates sending an outgoing challenge and listening to the response
+ * by invoking <code>Client</code>'s <code>challengeAsync</code> method.
+ * Displays appropriate messages upon receiving a response and proceeds to close or to show the game window if necessary.
+ * Cancel button cancels the challenge via <code>Client</code>'s <code>cancelChallengeAsync</code> method.
+ */
 public class OutgoingChallengeWindow {
     private final static Logger log = LogManager.getLogger(OutgoingChallengeWindow.class);
     private final Client client;

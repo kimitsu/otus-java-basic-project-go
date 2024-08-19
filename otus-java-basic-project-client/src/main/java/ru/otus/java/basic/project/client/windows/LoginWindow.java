@@ -9,6 +9,12 @@ import javax.swing.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+/**
+ * The login window displays input fields for login, password and host:port.
+ * Login and Register buttons attempt to connect and authenticate on the server
+ * using <code>Client</code>'s <code>connectAndLoginAsync</code> method.
+ * Exit button quits the application.
+ */
 public class LoginWindow {
     private static final Logger log = LogManager.getLogger(LoginWindow.class);
     private final JFrame frame;

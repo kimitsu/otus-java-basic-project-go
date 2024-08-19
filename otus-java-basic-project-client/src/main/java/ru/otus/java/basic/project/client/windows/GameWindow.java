@@ -21,6 +21,14 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 
+/**
+ * The game window contains a go <code>Board</code>, a couple of information labels, and two buttons that switch
+ * function depending on game state.
+ * <code>GameWindow</code> object handles user input and invokes
+ * <code>Client</code>'s methods to send messages to the server.
+ * <code>Client</code> object invokes <code>GameWindow</code>
+ * object's <code>.update</code> method to update the UI to reflect the game state.
+ */
 public class GameWindow {
     private final static Logger log = LogManager.getLogger(GameWindow.class);
     private final Client client;
